@@ -17,7 +17,7 @@ limitations under the License.
 from setuptools import setup, find_packages
 
 setup(
-    name='url-parser',
+    name='subunit-parser',
     version='0.0.1',
     description='Outputs all HTTP calls a given test made that were logged.',
     author='Stephen Lowrie',
