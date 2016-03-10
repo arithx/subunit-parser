@@ -1,5 +1,5 @@
-url-parser
-==========
+subunit-parser
+==============
 
 Outputs all HTTP calls a given test made that were logged.
 
