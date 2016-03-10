@@ -151,5 +151,5 @@ def output(self, url_parser, output_file):
 
 def entry_point():
     cl_args = ArgumentParser().parse_args()
-    parser = parse(cl_args.subunit_file, cl_args.non_subunit_name)
+    parser = parse(cl_args.subunit, cl_args.non_subunit_name)
     output(parser, cl_args.output_file)
