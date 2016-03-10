@@ -104,7 +104,7 @@ class ArgumentParser(argparse.ArgumentParser):
                     [-o/--output-file]
         """
 
-        super(VerifyArgumentParser, self).__init__(
+        super(ArgumentParser, self).__init__(
             usage=usage_string, description=desc)
 
         self.prog = "Argument Parser"
