@@ -144,7 +144,7 @@ def parse(subunit_file, non_subunit_name):
     return url_parser
 
 
-def output(self, url_parser, output_file):
+def output(url_parser, output_file):
     with open(output_file, "w") as outfile:
         outfile.write(json.dumps(url_parser.test_logs))
 
