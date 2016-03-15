@@ -18,6 +18,24 @@ class UrlParser(testtools.TestResult):
                         '[0-9a-z]{4}[0-9a-z]{12}([^0-9a-z]|$)')
     ip_re = re.compile(r'(^|[^0-9])[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]'
                         '{1,3}([^0-9]|$)')
+    services = {
+        8776: "Block Storage",
+        8774: "Nova",
+        8773: "Nova-API", 8775: "Nova-API",
+        8386: "Sahara",
+        35357: "Keystone", 5000: "Keystone",
+        9292: "Glance", 9191: "Glance",
+        9696: "Neutron",
+        6000: "Swift", 6001: "Swift", 6002: "Swift",
+        8004: "Heat", 8000: "Heat", 8003: "Heat",
+        8777: "Ceilometer",
+        80: "Horizon",
+        8080: "Swift",
+        443: "SSL",
+        873: "rsync",
+        3260: "iSCSI",
+        3306: "MySQL",
+        5672: "AMQP"}
 
     def __init__(self):
         super(UrlParser, self).__init__()
@@ -63,9 +81,16 @@ class UrlParser(testtools.TestResult):
                     calls.append({
                         "name": match.group("name"),
                         "verb": match.group("verb"),
+                        "service": self.get_service(match.group("url"))
                         "url": self.url_path(match.group("url"))})
 
         return calls
+
+    def get_service(self, url):
+        match = re.match(":(?P<port>\d+)")
+        if match is not None:
+            return self.services.get(match.group("port"), "Unknown")
+        return "Unknown"
 
     def url_path(self, url):
         match = re.match("http[s]?://[^/]*/(?P<path>.*)", url)
