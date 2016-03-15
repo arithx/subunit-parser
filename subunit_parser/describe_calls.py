@@ -87,7 +87,7 @@ class UrlParser(testtools.TestResult):
         return calls
 
     def get_service(self, url):
-        match = re.match(":(?P<port>\d+)", url)
+        match = re.match(".*:(?P<port>\d+).*", url)
         if match is not None:
             return self.services.get(match.group("port"), "Unknown")
         return "Unknown"
