@@ -18,6 +18,9 @@ class UrlParser(testtools.TestResult):
                         '[0-9a-z]{4}[0-9a-z]{12}([^0-9a-z]|$)')
     ip_re = re.compile(r'(^|[^0-9])[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]'
                         '{1,3}([^0-9]|$)')
+
+    # Based on kilo defaults:
+    # http://docs.openstack.org/kilo/config-reference/content/firewalls-default-ports.html
     services = {
         8776: "Block Storage",
         8774: "Nova",
