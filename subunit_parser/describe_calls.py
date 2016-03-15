@@ -81,7 +81,7 @@ class UrlParser(testtools.TestResult):
                     calls.append({
                         "name": match.group("name"),
                         "verb": match.group("verb"),
-                        "service": self.get_service(match.group("url"))
+                        "service": self.get_service(match.group("url")),
                         "url": self.url_path(match.group("url"))})
 
         return calls
