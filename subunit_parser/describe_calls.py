@@ -89,7 +89,7 @@ class UrlParser(testtools.TestResult):
     def get_service(self, url):
         match = re.match(".*:(?P<port>\d+).*", url)
         if match is not None:
-            return self.services.get(match.group("port"), "Unknown")
+            return self.services.get(int(match.group("port")), "Unknown")
         return "Unknown"
 
     def url_path(self, url):
